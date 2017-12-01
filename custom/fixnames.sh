@@ -1,0 +1,17 @@
+#!/bin/zsh
+GREEN='\033[0;32m'
+CYAN='\033[0;36m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+
+autoload zmv
+
+if [ "$1" = "dry" ]
+then
+	  zmv -n '(*).(*)' '${(L)1// /-}.${(L)2}'
+elif [ "$1" = "go" ]
+then
+	  zmv '(*).(*)' '${(L)1// /-}.${(L)2}'
+else
+    echo "specify ${YELLOW}dry${NC} or ${YELLOW}go${NC}"
+fi
