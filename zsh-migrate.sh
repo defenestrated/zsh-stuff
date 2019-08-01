@@ -17,5 +17,5 @@ elif [[ $1 = "import" ]]; then
     cp -rfv ./themes /Users/$USER/.oh-my-zsh/
     cp -rfv ./.zshrc /Users/$USER/
 else
-    echo "specify 'import' or 'export'"
+    echo "specify 'import' (pull remote changes) or 'export' (saves local changes + pushes)"
 fi
