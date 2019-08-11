@@ -37,7 +37,7 @@ then
     for i in "${dirs[@]}"
     do
 	      echo "${CYAN}backing up ${YELLOW}$i ${CYAN}to ${YELLOW}bigfatskinny crypt${NC}"
-	      rsync -avhP $i /Volumes/BigFatSkinny/_The_Crypt/
+	      rsync -avhP --exclude "node_modules" $i /Volumes/BigFatSkinny/_The_Crypt/
     done
 
     echo "${CYAN}backing up filetwo to ${YELLOW}bigfatskinny${NC}"
