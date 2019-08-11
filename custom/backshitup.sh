@@ -12,7 +12,7 @@ read "yn?include zsh backup? [y/n] "
 if [[ "$yn" =~ ^[Yy]$ ]]
 then
     cd ~/zsh-stuff
-    echo "${CYAN}running zsh migrate"
+    echo "${CYAN}running zsh migrate...${NC}"
     ./zsh-migrate.sh export
     cd $startdir
 else
@@ -23,29 +23,30 @@ if [ -d "/Volumes/BigFatSkinny" ]
 then
 
     dirs=(
-        "~/Active-Work/_mine"
-        "~/Active-Work/Freelance"
-        "~/Active-Work/invoices"
-        "~/Active-Work/reference"
-        "~/Active-Work/teaching"
-        "~/Active-Work/web_dev"
-        "~/Documents"
-        "~/Pictures"
+        "/Users/sam/Active-Work/_mine"
+        "/Users/sam/Active-Work/Freelance"
+        "/Users/sam/Active-Work/invoices"
+        "/Users/sam/Active-Work/reference"
+        "/Users/sam/Active-Work/teaching"
+        "/Users/sam/Active-Work/web_dev"
+        "/Users/sam/code"
+        "/Users/sam/Documents"
+        "/Users/sam/Pictures"
     )
 
     for i in "${dirs[@]}"
     do
 	      echo "${CYAN}backing up ${YELLOW}$i ${CYAN}to ${YELLOW}bigfatskinny crypt${NC}"
-	      # rsync -avhP $i /Volumes/BigFatSkinny/_The_Crypt/
+	      rsync -avhP $i /Volumes/BigFatSkinny/_The_Crypt/
     done
 
-    # echo "${CYAN}backing up filetwo to ${YELLOW}bigfatskinny${NC}"
-    # echo "copying to dated version..."
-    # cp -r ~/Active-Work/filetwo.sparsebundle ~/Active-Work/filetwo-$(date '+%Y-%m-%d').sparsebundle
-    # echo "rsync'ing..."
-    # rsync -avh ~/Active-Work/filetwo-*.sparsebundle /Volumes/BigFatSkinny/_The_Crypt/
-    # echo "removing dated filetwo..."
-    # rm -r ~/Active-Work/filetwo-*.sparsebundle
+    echo "${CYAN}backing up filetwo to ${YELLOW}bigfatskinny${NC}"
+    echo "copying to dated version..."
+    cp -r ~/Active-Work/filetwo.sparsebundle ~/Active-Work/filetwo-$(date '+%Y-%m-%d').sparsebundle
+    echo "rsync'ing..."
+    rsync -avh ~/Active-Work/filetwo-*.sparsebundle /Volumes/BigFatSkinny/_The_Crypt/
+    echo "removing dated filetwo..."
+    rm -r ~/Active-Work/filetwo-*.sparsebundle
 
     if [ -d "/Volumes/BigFatFatty" ]
     then
