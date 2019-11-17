@@ -40,3 +40,6 @@ function unwebp() {
 alias backshitup="source ~/.oh-my-zsh/custom/backshitup.sh"
 alias customplug="nano ~/.oh-my-zsh/custom/plugins/samplug/samplug.plugin.zsh"
 alias lsp="ls -l | awk '{k=0;for(i=0;i<=8;i++)k+=((substr(\$1,i+2,1)~/[rwx]/)*2^(8-i));if(k)printf(\"%0o \",k);print}'"
+
+export LOCAL_IP=`ipconfig getifaddr en0`
+alias serve="browser-sync start -s -f . --no-notify --host $LOCAL_IP --port 9000"
